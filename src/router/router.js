@@ -78,6 +78,14 @@ export default [
     }
   },
   {
+    path: '/named_view',
+    components: {
+      default: () => import('@/views/child.vue'),
+      email: () => import('@/views/email.vue'),
+      tel: () => import('@/views/tel.vue'),
+    }
+  },
+  {
     path: '*',
     component: () => import('@/views/error_404.vue')
   }
