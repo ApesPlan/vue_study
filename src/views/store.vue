@@ -8,21 +8,23 @@
 
     <!-- <a-input @input="handleInput"/>
     <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
-    <!-- <p>appName: {{ appName }}</p> -->
-    <p>userName: {{ userName }}</p>
+    <p>appName: {{ appName }}</p>
+    <!-- <p>userName: {{ userName }}</p> -->
     <!-- <p>firstLetter: {{ firstLetter }}</p> -->
-    <!-- <p>appNameWithVersion: {{ appNameWithVersion }}</p> -->
+    <p>appNameWithVersion: {{ appNameWithVersion }}</p>
+    <button @click="handleChangeAppName">修改appName</button>
+    <p>{{ appVersion }}</p>
   </div>
 </template>
 <script>
 // import Ainput from '@/components/AInput.vue'
 // import AInput from '_c/AInput.vue'
 // import AShow from '_c/AShow.vue'
-// import { mapState } from 'vuex'
-// import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 // import { mapState, mapGetters } from 'vuex'
-import { createNamespacedHelpers } from 'vuex'
-const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
+// import { createNamespacedHelpers } from 'vuex'
+// const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
 export default {
   name: 'stroe',
   data () {
@@ -45,6 +47,15 @@ export default {
     // ...mapState([ //...展开操作符
     //   'appName'
     // ]),
+
+    ...mapGetters([
+      'appNameWithVersion'
+    ]),
+
+    ...mapState({ //...展开操作符
+      appName: state => state.appName,
+      appVersion: state => state.appVersion
+    }),
 
     // ...mapState({ //...展开操作符
     //   userName: state => state.user.userName,
@@ -72,9 +83,19 @@ export default {
 
 // import { createNamespacedHelpers } from 'vuex'
 // const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
-    ...mapState({ //...展开操作符
-      userName: state => state.userName,
-    })
+    // ...mapState({ //...展开操作符
+    //   userName: state => state.userName,
+    // })
+
+    // 这样改appName
+    // appName: {
+    //   set: function () {
+    //     this.inputValue = newValue + 'sd'
+    //   },
+    //   get: function () {
+    //     return this.inputValue + 'sdasdf'
+    //   }
+    // },
 
 //xxx
     // firstLetter () {
@@ -97,6 +118,21 @@ export default {
     // handleInput (val) {
     //   this.inputValue = val
     // }
+
+    handleChangeAppName () {
+      // this.appName = 'newAppName' // 不能这么修改，这么会报错
+      // this.$store.commit('SET_APP_NAME', 'newAppName')
+      // 对象写法
+      // this.$store.commit('SET_APP_NAME', {
+      //   newAppName: 'newAppName'
+      // })
+      // 对象写法
+      this.$store.commit({
+        type: 'SET_APP_NAME',
+        newAppName: 'newAppName'
+      })
+      this.$store.commit('SET_APP_VERSION')
+    }
   }
 }
 </script>
