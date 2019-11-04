@@ -6,18 +6,18 @@
     <a-show :content="inputValue"/> -->
 
 
-    <a-input @input="handleInput"/>
-    <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p>
-    <!-- <p>appName: {{ appName }}</p> -->
-    <!-- <p>userName: {{ userName }}</p> -->
+    <!-- <a-input @input="handleInput"/>
+    <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
+    <p>appName: {{ appName }}</p>
+    <p>userName: {{ userName }}</p>
     <!-- <p>firstLetter: {{ firstLetter }}</p> -->
     <!-- <p>appNameWithVersion: {{ appNameWithVersion }}</p> -->
   </div>
 </template>
 <script>
 // import Ainput from '@/components/AInput.vue'
-import AInput from '_c/AInput.vue'
-import AShow from '_c/AShow.vue'
+// import AInput from '_c/AInput.vue'
+// import AShow from '_c/AShow.vue'
 // import { mapState } from 'vuex'
 // import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
@@ -30,7 +30,7 @@ export default {
     }
   },
   components: {
-    AInput, // 父子
+    // AInput, // 父子
     // AShow // 兄弟
   },
   computed: {
@@ -76,24 +76,24 @@ export default {
     //   // 'getters'
     // ]),
 
-    // appName () {
-    //   return this.$store.state.appName
-    // },
-    // userName () {
-    //   return this.$store.state.user.userName
-    // }
+    appName () {
+      return this.$store.state.appName
+    },
+    userName () {
+      return this.$store.state.user.userName
+    }
 
     // appNameWithVersion () {
     //   return this.$store.getters.appNameWithVersion
     // },
-    inputValueLastLetter () {
-      return this.inputValue.substr(-1, 1)
-    }
+    // inputValueLastLetter () {
+    //   return this.inputValue.substr(-1, 1)
+    // }
   },
   methods: {
-    handleInput (val) {
-      this.inputValue = val
-    }
+    // handleInput (val) {
+    //   this.inputValue = val
+    // }
   }
 }
 </script>
