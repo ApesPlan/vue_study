@@ -127,6 +127,10 @@ export default {
       'SET_APP_NAME',
       'SET_USER_NAME'
     ]),
+    // user有命名空间时
+    // ...mapMutations('user', [
+    //   'SET_USER_NAME'
+    // ]),
     // handleInput (val) {
     //   this.inputValue = val
     // }
