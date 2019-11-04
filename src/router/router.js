@@ -55,6 +55,13 @@ export default [
     component: () => import('@/views/login.vue'),
   },
   {
+    path: '/argu/:name',
+    name: 'argu',
+    component: () => import('@/views/argu.vue'),
+    // 路由组件传参，解耦 $router.param.name
+    props: true
+  },
+  {
     path: '*',
     component: () => import('@/views/error_404.vue')
   }
