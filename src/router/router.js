@@ -61,6 +61,22 @@ export default [
     // 路由组件传参，解耦 $router.param.name
     props: true
   },
+  // 路由重定向
+  {
+    path: '/main',
+    // redirect: '/'
+    // redirect: {
+    //   name: 'home'
+    // }
+    // redirect: to => '/'
+    redirect: to => {
+      // console.log(t o)
+      // return {
+      //   name: 'home'
+      // }
+      return '/'
+    }
+  },
   {
     path: '*',
     component: () => import('@/views/error_404.vue')
