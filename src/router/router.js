@@ -64,6 +64,7 @@ export default [
   // 路由重定向
   {
     path: '/main',
+    name: 'main',
     // redirect: '/'
     // redirect: {
     //   name: 'home'
@@ -79,11 +80,17 @@ export default [
   },
   {
     path: '/named_view',
+    name: 'named_view',
     components: {
       default: () => import('@/views/child.vue'),
       email: () => import('@/views/email.vue'),
       tel: () => import('@/views/tel.vue'),
     }
+  },
+  {
+    path: '/store',
+    name: 'store',
+    component: () => import('@/views/store.vue'),
   },
   {
     path: '*',
