@@ -8,17 +8,18 @@
 
     <!-- <a-input @input="handleInput"/>
     <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
-    <p>appName: {{ appName }}</p>
-    <p>userName: {{ userName }}</p>
-    <!-- <p>firstLetter: {{ firstLetter }}</p> -->
-    <!-- <p>appNameWithVersion: {{ appNameWithVersion }}</p> -->
+    <!-- <p>appName: {{ appName }}</p>
+    <p>userName: {{ userName }}</p> -->
+    <p>firstLetter: {{ firstLetter }}</p> -->
+    <p>appNameWithVersion: {{ appNameWithVersion }}</p>
   </div>
 </template>
 <script>
 // import Ainput from '@/components/AInput.vue'
 // import AInput from '_c/AInput.vue'
 // import AShow from '_c/AShow.vue'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 // import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
 // const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
@@ -45,19 +46,21 @@ export default {
     //   'appName'
     // ]),
 
-    ...mapState({ //...展开操作符
-      // 'appName'
-      appName: state => state.appName,
-      userName: state => state.user.userName,
-    }),
     // ...mapState({ //...展开操作符
     //   userName: state => state.user.userName,
     // }),
 
-    // ...mapGetters([
-    //   'appNameWithVersion',
-    //   'firstLetter'
-    // ]),
+    // ...mapState({ //...展开操作符
+    //   // 'appName'
+    //   appName: state => state.appName,
+    //   userName: state => state.user.userName,
+    // }),
+
+
+    ...mapGetters([
+      'appNameWithVersion',
+      'firstLetter'
+    ]),
 
     // ...mapState('user', { //...展开操作符
     //   userName: state => state.userName,
