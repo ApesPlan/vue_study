@@ -15,7 +15,7 @@ const actions = {
 
 export default {
   // 使用命名空间
-  // namespaced: true,
+  namespaced: true,
   getters,
   state,
   mutations,
