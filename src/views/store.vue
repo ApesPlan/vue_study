@@ -9,11 +9,12 @@
     <!-- <a-input @input="handleInput"/>
     <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
     <p>appName: {{ appName }}</p>
-    <!-- <p>userName: {{ userName }}</p> -->
+    <p>userName: {{ userName }}</p>
     <!-- <p>firstLetter: {{ firstLetter }}</p> -->
     <p>appNameWithVersion: {{ appNameWithVersion }}</p>
     <button @click="handleChangeAppName">修改appName</button>
     <!-- <p>{{ appVersion }}</p> -->
+    <button @click="handleChangeUserName">修改用户名</button>
   </div>
 </template>
 <script>
@@ -53,8 +54,14 @@ export default {
       'appNameWithVersion'
     ]),
 
+    // ...mapState({ //...展开操作符
+    //   appName: state => state.appName,
+    //   appVersion: state => state.appVersion
+    // }),
+
     ...mapState({ //...展开操作符
       appName: state => state.appName,
+      userName: state => state.user.userName,
       appVersion: state => state.appVersion
     }),
 
@@ -117,7 +124,8 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'SET_APP_NAME'
+      'SET_APP_NAME',
+      'SET_USER_NAME'
     ]),
     // handleInput (val) {
     //   this.inputValue = val
@@ -138,6 +146,9 @@ export default {
       // this.SET_APP_NAME('newAppName')
       this.SET_APP_NAME({newAppName: 'newAppName'})
       // this.$store.commit('SET_APP_VERSION')
+    },
+    handleChangeUserName () {
+      this.SET_USER_NAME('vueName')
     }
   }
 }

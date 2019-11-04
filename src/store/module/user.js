@@ -7,6 +7,9 @@ const getters = {
   }
 }
 const mutations = {
+  SET_USER_NAME (state, params) {
+    state.userName = params
+  }
 }
 const actions = {
 }
@@ -15,7 +18,7 @@ const actions = {
 
 export default {
   // 使用命名空间
-  namespaced: true,
+  // namespaced: true,
   getters,
   state,
   mutations,
