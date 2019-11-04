@@ -30,7 +30,29 @@ export default [
     // 路由组件传参，解耦 对象模式 路由中直接传
     props: {
       food: 'banana'
+    },
+    // 路由源信息 meta
+    meta: {
+      title: '关于'
     }
+  },
+  // 嵌套路由
+  {
+    path: '/parent',
+    name: 'parent',
+    component: () => import('@/views/parent.vue'),
+    children: [
+      {
+        // path: '/child', 子路径就不用加/
+        path: 'child',
+        component: () => import('@/views/child.vue')
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login.vue'),
   },
   {
     path: '*',
