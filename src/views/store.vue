@@ -18,7 +18,7 @@
 // import Ainput from '@/components/AInput.vue'
 // import AInput from '_c/AInput.vue'
 // import AShow from '_c/AShow.vue'
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 // import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
 // const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
@@ -34,15 +34,22 @@ export default {
     // AShow // 兄弟
   },
   computed: {
+    // appName () {
+    //   return this.$store.state.appName
+    // },
+    // userName () {
+    //   return this.$store.state.user.userName
+    // }
+
     // ...mapState([ //...展开操作符
     //   'appName'
     // ]),
 
-    // ...mapState({ //...展开操作符
-    //   // 'appName'
-    //   appName: state => state.appName,
-    //   userName: state => state.user.userName,
-    // }),
+    ...mapState({ //...展开操作符
+      // 'appName'
+      appName: state => state.appName,
+      userName: state => state.user.userName,
+    }),
     // ...mapState({ //...展开操作符
     //   userName: state => state.user.userName,
     // }),
@@ -75,13 +82,6 @@ export default {
     //   'appNameWithVersion',
     //   // 'getters'
     // ]),
-
-    appName () {
-      return this.$store.state.appName
-    },
-    userName () {
-      return this.$store.state.user.userName
-    }
 
     // appNameWithVersion () {
     //   return this.$store.getters.appNameWithVersion
