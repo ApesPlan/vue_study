@@ -1,11 +1,13 @@
 <template>
   <div>
-    <a-input :value="inputValue" @input="handleInput"/>
-    <p>{{ inputValue }}</p>
-    <a-show :content="inputValue"/>
     <!-- <a-input v-model="inputValue"/> -->
-    <!-- <a-input @input="handleInput"/> -->
-    <!-- <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
+    <!-- <a-input :value="inputValue" @input="handleInput"/>
+    <p>{{ inputValue }}</p>
+    <a-show :content="inputValue"/> -->
+
+
+    <a-input @input="handleInput"/>
+    <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p>
     <!-- <p>appName: {{ appName }}</p> -->
     <!-- <p>userName: {{ userName }}</p> -->
     <!-- <p>firstLetter: {{ firstLetter }}</p> -->
@@ -29,7 +31,7 @@ export default {
   },
   components: {
     AInput, // 父子
-    AShow // 兄弟
+    // AShow // 兄弟
   },
   computed: {
     // ...mapState([ //...展开操作符
@@ -84,9 +86,9 @@ export default {
     // appNameWithVersion () {
     //   return this.$store.getters.appNameWithVersion
     // },
-    // inputValueLastLetter () {
-    //   return this.inputValue.substr(-1, 1)
-    // }
+    inputValueLastLetter () {
+      return this.inputValue.substr(-1, 1)
+    }
   },
   methods: {
     handleInput (val) {
