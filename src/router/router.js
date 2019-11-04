@@ -1,0 +1,39 @@
+import Home from '@/views/Home.vue'
+export default [
+  {
+    path: '/',
+    alias: '/home_page', // 路由别名 localhost:8080/home_page
+    name: 'home',
+    component: Home,
+    props: route => ({
+      food: route.query.food
+    }),
+    // props: route => {
+    //   return {
+
+    //   }
+    // }
+    // 路由独享守卫
+    beforeEnter: (to, from, next) => {
+      // if (from.name === 'about') alert('这是从about页来的')
+      // else alert('这不是从about页来的')
+      next()
+    }
+  },
+  {
+    path: '/about',
+    name: 'about', // 命名路由
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
+    // 路由组件传参，解耦 对象模式 路由中直接传
+    props: {
+      food: 'banana'
+    }
+  },
+  {
+    path: '*',
+    component: () => import('@/views/error_404.vue')
+  }
+]
