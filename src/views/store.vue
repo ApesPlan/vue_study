@@ -13,7 +13,7 @@
     <!-- <p>firstLetter: {{ firstLetter }}</p> -->
     <p>appNameWithVersion: {{ appNameWithVersion }}</p>
     <button @click="handleChangeAppName">修改appName</button>
-    <p>{{ appVersion }}</p>
+    <!-- <p>{{ appVersion }}</p> -->
   </div>
 </template>
 <script>
@@ -22,6 +22,7 @@
 // import AShow from '_c/AShow.vue'
 import { mapState } from 'vuex'
 import { mapGetters } from 'vuex'
+import { mapMutations } from 'vuex'
 // import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
 // const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
@@ -115,6 +116,9 @@ export default {
     // }
   },
   methods: {
+    ...mapMutations([
+      'SET_APP_NAME'
+    ]),
     // handleInput (val) {
     //   this.inputValue = val
     // }
@@ -127,11 +131,13 @@ export default {
       //   newAppName: 'newAppName'
       // })
       // 对象写法
-      this.$store.commit({
-        type: 'SET_APP_NAME',
-        newAppName: 'newAppName'
-      })
-      this.$store.commit('SET_APP_VERSION')
+      // this.$store.commit({
+      //   type: 'SET_APP_NAME',
+      //   newAppName: 'newAppName'
+      // })
+      // this.SET_APP_NAME('newAppName')
+      this.SET_APP_NAME({newAppName: 'newAppName'})
+      // this.$store.commit('SET_APP_VERSION')
     }
   }
 }
