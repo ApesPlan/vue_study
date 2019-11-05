@@ -1,9 +1,10 @@
 import vue from "vue"
 
+// mutations不能做异步操作，只能做同步
 const mutations = {
   SET_APP_NAME (state, params) {
-    // state.appName = params
-    state.appName = params.newAppName
+    state.appName = params
+    // state.appName = params.newAppName
   },
   SET_APP_VERSION (state) {
     vue.set(state, 'appVersion', 'v1.0')

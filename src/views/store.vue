@@ -24,6 +24,7 @@
 import { mapState } from 'vuex'
 import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 // import { mapState, mapGetters } from 'vuex'
 // import { createNamespacedHelpers } from 'vuex'
 // const { mapState } = createNamespacedHelpers('user') // 传入命名空间名
@@ -127,6 +128,9 @@ export default {
       'SET_APP_NAME',
       'SET_USER_NAME'
     ]),
+    ...mapActions([
+      'updateAppName'
+    ]),
     // user有命名空间时
     // ...mapMutations('user', [
     //   'SET_USER_NAME'
@@ -148,11 +152,14 @@ export default {
       //   newAppName: 'newAppName'
       // })
       // this.SET_APP_NAME('newAppName')
-      this.SET_APP_NAME({newAppName: 'newAppName'})
+      // this.SET_APP_NAME({newAppName: 'newAppName'})
       // this.$store.commit('SET_APP_VERSION')
+
+      this.updateAppName()
     },
     handleChangeUserName () {
       this.SET_USER_NAME('vueName')
+      // this.$$store.dispatch('updateAppName', '123')
     }
   }
 }
