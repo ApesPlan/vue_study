@@ -15,6 +15,8 @@
     <button @click="handleChangeAppName">修改appName</button>
     <!-- <p>{{ appVersion }}</p> -->
     <button @click="handleChangeUserName">修改用户名</button>
+    <button @click="registerModule">动态注册模块</button>
+    <p v-for="(li, index) in todoList" :key="index">{{ li }}</p>
   </div>
 </template>
 <script>
@@ -63,7 +65,9 @@ export default {
     ...mapState({ //...展开操作符
       appName: state => state.appName,
       userName: state => state.user.userName,
-      appVersion: state => state.appVersion
+      appVersion: state => state.appVersion,
+      // todoList: state => state.todo ? state.todo.todoList : [],
+      todoList: state => state.user.todo ? state.user.todo.todoList : []
     }),
 
     // ...mapState({ //...展开操作符
@@ -159,7 +163,29 @@ export default {
     },
     handleChangeUserName () {
       this.SET_USER_NAME('vueName')
-      // this.$$store.dispatch('updateAppName', '123')
+      // this.$store.dispatch('updateAppName', '123')
+    },
+    // // 动态注册模块
+    // registerModule() {
+    //   this.$store.registerModule('todo', {
+    //     state: {
+    //       todoList: [
+    //         '123',
+    //         '456'
+    //       ]
+    //     }
+    //   })
+    // },
+    // todo模块注册user模块里
+    registerModule() {
+      this.$store.registerModule(['user', 'todo'], {
+        state: {
+          todoList: [
+            '123',
+            '456'
+          ]
+        }
+      })
     }
   }
 }

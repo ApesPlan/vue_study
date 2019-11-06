@@ -12,6 +12,13 @@ const mutations = {
   }
 }
 const actions = {
+  updataUserName({ commit, state, rootState, dispatch }) {
+    // rootState.appName
+    // dispatch('xxx', '')
+  },
+  xxx() {
+    // dispatch可以触发，action
+  }
 }
 // const modules = {
 // }
@@ -22,5 +29,8 @@ export default {
   getters,
   state,
   mutations,
-  actions
+  actions,
+  modules: {
+    // 模块中还有模块
+  }
 }
