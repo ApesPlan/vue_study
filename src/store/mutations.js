@@ -9,6 +9,9 @@ const mutations = {
   SET_APP_VERSION (state) {
     vue.set(state, 'appVersion', 'v1.0')
     // state.appVersion = 'v2.0' // 不能响应式更新
+  },
+  SET_STATE_VALUE(state, value) {
+    state.stateValue = value
   }
 }
 export default mutations

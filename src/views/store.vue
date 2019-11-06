@@ -1,13 +1,16 @@
 <template>
   <div>
+    <!-- v-model在严格模式下，会存在直接赋值的情况，所以开启严格模式后需要改 -->
     <!-- <a-input v-model="inputValue"/> -->
-    <!-- <a-input :value="inputValue" @input="handleInput"/>
-    <p>{{ inputValue }}</p>
-    <a-show :content="inputValue"/> -->
+    <!-- <a-input :value="inputValue" @input="handleInput"/> -->
+    <!-- <p>{{ inputValue }}</p> -->
+    <!-- <a-show :content="inputValue"/> -->
 
 
-    <!-- <a-input @input="handleInput"/>
-    <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
+    <!-- <a-input @input="handleInput"/> -->
+     <a-input :value="stateValue" @input="handleStateValueChange"/>
+     <p>{{ stateValue }} -> lastletter is {{ inputValueLastLetter }}</p>
+    <!-- <p>{{ inputValue }} -> lastletter is {{ inputValueLastLetter }}</p> -->
     <p>appName: {{ appName }}</p>
     <p>userName: {{ userName }}</p>
     <!-- <p>firstLetter: {{ firstLetter }}</p> -->
@@ -21,7 +24,7 @@
 </template>
 <script>
 // import Ainput from '@/components/AInput.vue'
-// import AInput from '_c/AInput.vue'
+import AInput from '_c/AInput.vue'
 // import AShow from '_c/AShow.vue'
 import { mapState } from 'vuex'
 import { mapGetters } from 'vuex'
@@ -38,7 +41,7 @@ export default {
     }
   },
   components: {
-    // AInput, // 父子
+    AInput, // 父子
     // AShow // 兄弟
   },
   computed: {
@@ -67,7 +70,8 @@ export default {
       userName: state => state.user.userName,
       appVersion: state => state.appVersion,
       // todoList: state => state.todo ? state.todo.todoList : [],
-      todoList: state => state.user.todo ? state.user.todo.todoList : []
+      todoList: state => state.user.todo ? state.user.todo.todoList : [],
+      stateValue: state => state.stateValue
     }),
 
     // ...mapState({ //...展开操作符
@@ -123,14 +127,15 @@ export default {
     // appNameWithVersion () {
     //   return this.$store.getters.appNameWithVersion
     // },
-    // inputValueLastLetter () {
-    //   return this.inputValue.substr(-1, 1)
-    // }
+    inputValueLastLetter () {
+      return this.inputValue.substr(-1, 1)
+    }
   },
   methods: {
     ...mapMutations([
       'SET_APP_NAME',
-      'SET_USER_NAME'
+      'SET_USER_NAME',
+      'SET_STATE_VALUE'
     ]),
     ...mapActions([
       'updateAppName'
@@ -162,6 +167,7 @@ export default {
       this.updateAppName()
     },
     handleChangeUserName () {
+      // this.$store.state.user.userName = 'haha' // 直接修改，错误的方式 开启严格模式就会报错
       this.SET_USER_NAME('vueName')
       // this.$store.dispatch('updateAppName', '123')
     },
@@ -186,6 +192,9 @@ export default {
           ]
         }
       })
+    },
+    handleStateValueChange(val) {
+      this.SET_STATE_VALUE(val)
     }
   }
 }

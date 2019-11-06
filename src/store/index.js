@@ -20,6 +20,8 @@ export default new Vuex.Store({
   // },
   // modules: {
   // }
+  // stric: true, // 严格模式 组件内直接给state赋值，报错
+  stric: process.env.NODE_ENV === 'development',
   state,
   getters,
   mutations,
